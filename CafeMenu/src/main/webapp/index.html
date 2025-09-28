@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cafe Menu</title>
+  <link href="https://db.onlinewebfonts.com/c/e02bdd9828bed1e2490bdf94662dbba8?family=Arial+Nova+Cond" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Floating Header -->
+  <div class="header-wrapper">
+    <div class="header">
+      <div class="header-left"><a href="#main">Main</a></div>
+      <div class="header-right">
+        <a href="#menu">Menu (35)</a>
+        <a href="#bestsellers">Best Sellers</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Section -->
+  <section id="main">
+    <div class="main">
+      <div class="left-content">
+        <img src="images/main/logo.png" alt="Logo" class="logo">
+        <div class="title">
+          <div class="coffee">Coffee</div>
+          <div class="house">House</div>
+          <div class="tagline">
+            Quick to grab, easy to love, wherever you are.
+          </div>
+        </div>
+      </div>
+      <img src="images/main/red mug.png" alt="Red mug" class="red-mug">
+    </div>
+  </section>
+
+  <!-- Menu Section -->
+  <section id="menu">
+    <h1>Menu (35)</h1>
+    <div class="menu-container">
+      <a href="MenuServlet?category=Coffee" class="menu-box-link">
+        <div class="menu-box">
+          <img src="images/menu/Coffee.png" alt="Coffee" class="menu-img">
+          <div class="menu-text">Coffee</div>
+        </div>
+      </a>
+      <a href="MenuServlet?category=Tea" class="menu-box-link">
+        <div class="menu-box">
+          <img src="images/menu/Tea.png" alt="Tea" class="menu-img">
+          <div class="menu-text">Tea</div>
+        </div>
+      </a>
+      <a href="MenuServlet?category=Caffeine-Free Drinks" class="menu-box-link">
+        <div class="menu-box">
+          <img src="images/menu/Caffeine-Free.png" alt="Caffeine-Free Drinks" class="menu-img">
+          <div class="menu-text">Caffeine-Free Drinks</div>
+        </div>
+      </a>
+      <a href="MenuServlet?category=Bread and Pastry" class="menu-box-link">
+        <div class="menu-box">
+          <img src="images/menu/Bread.png" alt="Bread & Pastry" class="menu-img">
+          <div class="menu-text">Bread and Pastry</div>
+        </div>
+      </a>
+      <a href="MenuServlet?category=Sandwiches" class="menu-box-link">
+        <div class="menu-box">
+          <img src="images/menu/Sandwiches.png" alt="Sandwiches" class="menu-img">
+          <div class="menu-text">Sandwiches</div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Info Section -->
+  <section id="info">
+    <div class="info-box">
+      <p><strong>At Coffee House</strong>, we know life moves fast — that’s why we make great coffee, tea, and fresh bites easy to take with you. From handcrafted drinks to warm pastries and hearty sandwiches, everything is made for flavor, freshness, and convenience.</p>
+      <p><em>Quick to grab, easy to love, wherever you are.</em></p>
+    </div>
+  </section>
+
+  <!-- Best Sellers Section -->
+  <section id="bestsellers">
+    <h1>Best Sellers</h1>
+    <p>Customer-loved coffees, brewed just right. ☕︎</p>
+  </section>
+</body>
+</html>
