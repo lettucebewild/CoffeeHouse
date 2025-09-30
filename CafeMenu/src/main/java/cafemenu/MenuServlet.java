@@ -87,22 +87,24 @@ public class MenuServlet extends HttpServlet {
 
         // Categories bar
         resp.getWriter().println("<div class='categories-bar'>");
-        String[] firstLine = {"Coffee", "Tea", "Caffeine-Free Drinks"};
-        String[] secondLine = {"Bread and Pastry", "Sandwiches"};
-
-        for (String c : firstLine) {
+        String[] allCategories = {"Coffee", "Tea", "Caffeine-Free Drinks", "Bread and Pastry", "Sandwiches"};
+        for (int i = 0; i < allCategories.length; i++) {
+            String c = allCategories[i];
             String activeClass = c.equalsIgnoreCase(category != null ? category : "") ? "active" : "";
-            resp.getWriter().print("<a class='category-link " + activeClass + "' href='MenuServlet?category=" + c + "'>" + c + "</a> / ");
-        }
 
-        resp.getWriter().println("<br>");
-        for (int i = 0; i < secondLine.length; i++) {
-            String c = secondLine[i];
-            String activeClass = c.equalsIgnoreCase(category != null ? category : "") ? "active" : "";
-            resp.getWriter().print("<a class='category-link " + activeClass + "' href='MenuServlet?category=" + c + "'>" + c + "</a>");
-            if (i < secondLine.length - 1) resp.getWriter().print(" / ");
+            // Count items in this category
+            long count = menu.stream().filter(m -> m.getCategory().equalsIgnoreCase(c)).count();
+
+            // Print category link with count
+            resp.getWriter().print("<a class='category-link " + activeClass + "' href='MenuServlet?category=" + c + "'>" 
+                                    + c + " (" + count + ")</a>");
+
+            // Add slash separator except for the last item
+            if (i < allCategories.length - 1) {
+                if (i == 2) resp.getWriter().print(" <br> "); // break after the first 3 categories
+                else resp.getWriter().print(" / ");
+            }
         }
-        resp.getWriter().println("</div>");
 
         // Filter items by category
         List<MenuItem> filtered = new ArrayList<>();
@@ -129,7 +131,7 @@ public class MenuServlet extends HttpServlet {
                 String imgFile = m.getCategory().equalsIgnoreCase("Bread and Pastry") ? "Bread.png"
                                : m.getCategory().replace(" & ", "") + ".png";
                 resp.getWriter().println("<img src='images/menu/" + imgFile + "' alt='" + m.getName() + "'>");
-                resp.getWriter().println("<div class='item-name'>" + m.getName() + "</div>");
+                resp.getWriter().println("<div class='item-name'>" + m.getName().toUpperCase() + "</div>");
                 resp.getWriter().println("</div>");
             }
             resp.getWriter().println("</div>");

@@ -12,9 +12,30 @@
     <div class="header">
       <div class="header-left"><a href="#main">Main</a></div>
       <div class="header-right">
-        <a href="#menu">Menu (35)</a>
-        <a href="#bestsellers">Best Sellers</a>
-      </div>
+	  <div class="dropdown" tabindex="0">
+	    <a href="#menu">Menu (35)</a>
+	    <ul class="dropdown-menu">
+	      <li>
+	        <a href="MenuServlet?category=Coffee">Coffee</a>
+	        <ul class="submenu">
+	          <li><a href="MenuServlet?category=Coffee&subCategory=Hot">Hot</a></li>
+	          <li><a href="MenuServlet?category=Coffee&subCategory=Iced">Iced</a></li>
+	        </ul>
+	      </li>
+	      <li>
+	        <a href="MenuServlet?category=Tea">Tea</a>
+	        <ul class="submenu">
+	          <li><a href="MenuServlet?category=Tea&subCategory=Hot">Hot</a></li>
+	          <li><a href="MenuServlet?category=Tea&subCategory=Iced">Iced</a></li>
+	        </ul>
+	      </li>
+	      <li><a href="MenuServlet?category=Caffeine-Free Drinks">Caffeine-Free Drinks</a></li>
+	      <li><a href="MenuServlet?category=Bread and Pastry">Bread and Pastry</a></li>
+	      <li><a href="MenuServlet?category=Sandwiches">Sandwiches</a></li>
+	    </ul>
+	  </div>
+	  <a href="#bestsellers">Best Sellers</a>
+	</div>
     </div>
   </div>
 
@@ -39,43 +60,53 @@
   <section id="menu">
     <h1>Menu (35)</h1>
     <div class="menu-container">
-      <a href="MenuServlet?category=Coffee" class="menu-box-link">
-        <div class="menu-box">
-          <img src="images/menu/Coffee.png" alt="Coffee" class="menu-img">
-          <div class="menu-text">Coffee</div>
-        </div>
-      </a>
-      <a href="MenuServlet?category=Tea" class="menu-box-link">
-        <div class="menu-box">
-          <img src="images/menu/Tea.png" alt="Tea" class="menu-img">
-          <div class="menu-text">Tea</div>
-        </div>
-      </a>
-      <a href="MenuServlet?category=Caffeine-Free Drinks" class="menu-box-link">
-        <div class="menu-box">
-          <img src="images/menu/Caffeine-Free.png" alt="Caffeine-Free Drinks" class="menu-img">
-          <div class="menu-text">Caffeine-Free Drinks</div>
-        </div>
-      </a>
-      <a href="MenuServlet?category=Bread and Pastry" class="menu-box-link">
-        <div class="menu-box">
-          <img src="images/menu/Bread.png" alt="Bread & Pastry" class="menu-img">
-          <div class="menu-text">Bread and Pastry</div>
-        </div>
-      </a>
-      <a href="MenuServlet?category=Sandwiches" class="menu-box-link">
-        <div class="menu-box">
-          <img src="images/menu/Sandwiches.png" alt="Sandwiches" class="menu-img">
-          <div class="menu-text">Sandwiches</div>
-        </div>
-      </a>
-    </div>
+	  <a href="MenuServlet?category=Coffee" class="menu-box-link">
+	    <div class="menu-box">
+	      <img src="images/menu/Coffee.png" alt="Coffee" class="menu-img">
+	      <div class="menu-text">Coffee</div>
+	      <div class="menu-desc">Rich, aromatic brews crafted from carefully selected beans to energize your day.</div>
+	    </div>
+	  </a>
+	
+	  <a href="MenuServlet?category=Tea" class="menu-box-link">
+	    <div class="menu-box">
+	      <img src="images/menu/Tea.png" alt="Tea" class="menu-img">
+	      <div class="menu-text">Tea</div>
+	      <div class="menu-desc">A soothing selection of hot and iced teas, from classic blends to specialty lattes.</div>
+	    </div>
+	  </a>
+	
+	  <a href="MenuServlet?category=Caffeine-Free Drinks" class="menu-box-link">
+	    <div class="menu-box">
+	      <img src="images/menu/Caffeine-Free.png" alt="Caffeine-Free Drinks" class="menu-img">
+	      <div class="menu-text">Caffeine-Free Drinks</div>
+	      <div class="menu-desc">Refreshing, flavorful drinks without caffeine — perfect for any time of day.</div>
+	    </div>
+	  </a>
+	
+	  <a href="MenuServlet?category=Bread and Pastry" class="menu-box-link">
+	    <div class="menu-box">
+	      <img src="images/menu/Bread.png" alt="Bread & Pastry" class="menu-img">
+	      <div class="menu-text">Bread and Pastry</div>
+	      <div class="menu-desc">Freshly baked breads and pastries made daily to satisfy your sweet and savory cravings.</div>
+	    </div>
+	  </a>
+	
+	  <a href="MenuServlet?category=Sandwiches" class="menu-box-link">
+	    <div class="menu-box">
+	      <img src="images/menu/Sandwiches.png" alt="Sandwiches" class="menu-img">
+	      <div class="menu-text">Sandwiches</div>
+	      <div class="menu-desc">Hearty sandwiches made with quality ingredients — perfect for a quick meal or snack.</div>
+	    </div>
+	  </a>
+	</div>
   </section>
 
   <!-- Info Section -->
   <section id="info">
     <div class="info-box">
       <p><strong>At Coffee House</strong>, we know life moves fast — that’s why we make great coffee, tea, and fresh bites easy to take with you. From handcrafted drinks to warm pastries and hearty sandwiches, everything is made for flavor, freshness, and convenience.</p>
+      <p>We believe every cup should bring comfort, and every bite should feel like a pause from the rush of the day.</p>
       <p><em>Quick to grab, easy to love, wherever you are.</em></p>
     </div>
   </section>
@@ -83,7 +114,33 @@
   <!-- Best Sellers Section -->
   <section id="bestsellers">
     <h1>Best Sellers</h1>
-    <p>Customer-loved coffees, brewed just right. ☕︎</p>
+    <p>Customer-loved coffees, brewed just right. ☕︎(coming soon..)</p>
   </section>
 </body>
+
+<!-- Footer -->
+<section id="footer">
+  <div class="footer-container">
+    <div class="footer-column">
+      <h2>Location</h2>
+      <p>123 Coffee Street<br>Manila, Philippines</p>
+    </div>
+    <div class="footer-column">
+      <h2>Contact</h2>
+      <p>Email: info@coffeehouse.com<br>Phone: +63 912 345 6789</p>
+    </div>
+    <div class="footer-column">
+      <h2>Follow Us</h2>
+      <p>
+        <a href="#">Facebook</a><br>
+        <a href="#">Instagram</a><br>
+        <a href="#">Twitter</a>
+      </p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2025 Coffee House. All rights reserved.</p>
+  </div>
+</section>
+
 </html>
