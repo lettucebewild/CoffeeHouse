@@ -82,7 +82,7 @@ public class MenuServlet extends HttpServlet {
         resp.getWriter().println("<div class='header-wrapper'><div class='header'>");
         resp.getWriter().println("<div><a href='index.html'>Main</a></div>");
         resp.getWriter().println("<div class='header-right'>");
-        resp.getWriter().println("<a href='BestSellersServlet' style='font-size:35px;'>Best Sellers</a>");
+        resp.getWriter().println("<a href='index.html#bestsellers'>Best Sellers</a>");
         resp.getWriter().println("</div></div></div>");
 
         // Categories bar
