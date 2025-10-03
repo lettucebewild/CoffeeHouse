@@ -128,7 +128,7 @@ section {
   left: 0;
   background-color: #322C2B;
   display: none;
-  min-width: 250px;
+  min-width: 300px;
   z-index: 1000;
 }
 
@@ -142,7 +142,7 @@ section {
   padding: 10px 20px;
   color: white;
   text-decoration: none;
-  font-size: 25px;
+  font-size: 30px;
 }
 
 .header-right .dropdown-menu li a:hover {
@@ -223,17 +223,6 @@ section {
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
-.menu-desc {
-  font-size: 28px;
-  color: #322C2B;
-  text-align: center;
-  padding: 10px 20px;
-  opacity: 0;
-  max-height: 0;
-  overflow: hidden;
-  transition: opacity 0.3s ease, max-height 0.3s ease;
-}
-
 .menu-box:hover .menu-desc {
   opacity: 1;
   max-height: 200px;
@@ -247,9 +236,20 @@ section {
 
 .menu-text {
   text-align: center;
-  font-size: 45px;
+  font-size: 41px;
   color: #322C2B;
   margin-top: 40px;
+}
+
+.menu-desc {
+  font-size: 28px;
+  color: #322C2B;
+  text-align: center;
+  padding: 10px 20px;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.3s ease, max-height 0.3s ease;
 }
 
 /* ===== Categories Bar ===== */
