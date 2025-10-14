@@ -38,7 +38,7 @@ public class MenuServlet extends HttpServlet {
             
             String url = "jdbc:mysql://localhost:3306/coffeemenu";
             String username = "root";
-            String password = "Wsqk@2jej76";
+            String password = "Catsarecute!:3";
             
             connection = DriverManager.getConnection(url, username, password);
             System.out.println("Database connected successfully!");
@@ -132,7 +132,7 @@ public class MenuServlet extends HttpServlet {
         // Sandwiches (Caffeine-Free)
         menu.add(new MenuItem("Chicken Sandwich", "Sandwiches", "", "", 120, 78, 0));
         menu.add(new MenuItem("Ham and Cheese Sandwich", "Sandwiches", "", "", 130, 82, 0));
-        menu.add(new MenuItem("Egg Sandwich", "Sandwiches", "", "", 110, 75, 0));
+        menu.add(new MenuItem("Fried Egg Sandwich", "Sandwiches", "", "", 110, 75, 0));
         menu.add(new MenuItem("Beef Cheese Burger", "Sandwiches", "", "", 150, 88, 0));
     }
 
@@ -336,34 +336,10 @@ public class MenuServlet extends HttpServlet {
         out.println("<link href='https://db.onlinewebfonts.com/c/e02bdd9828bed1e2490bdf94662dbba8?family=Arial+Nova+Cond' rel='stylesheet'>");
         out.println("<link rel='stylesheet' href='styles.css'>");
         out.println("<style>");
-        out.println("body { font-family: 'Arial Nova Cond', sans-serif; background-color: #fdf8f5; margin: 0; padding: 0; }");
-        out.println(".filter-container {");
-        out.println("  margin: 150px 40px 20px 40px; /* Increased top margin */");
-        out.println("  display: flex;");
-        out.println("  gap: 20px;");
-        out.println("  flex-wrap: wrap;");
-        out.println("  align-items: center;");
-        out.println("  justify-content: flex-start;");
-        out.println("}");
-        out.println(".search-box, .filter-select {");
-        out.println("  padding: 10px;");
-        out.println("  font-size: 18px;");
-        out.println("  border: 2px solid #322C2B;");
-        out.println("  border-radius: 8px;");
-        out.println("  background-color: #fff;");
-        out.println("}");
-        out.println(".filter-btn {");
-        out.println("  background: #322C2B;");
-        out.println("  color: white;");
-        out.println("  border: none;");
-        out.println("  padding: 10px 20px;");
-        out.println("  cursor: pointer;");
-        out.println("  border-radius: 8px;");
-        out.println("}");
-        out.println(".filter-btn:hover { background: #9A3B3B; }");
+        out.println("body { font-family: 'Arial Nova Cond', sans-serif; background-color: #ffff; margin: 0; padding: 0; }");
         out.println(".item-price { color: #9A3B3B; font-size: 35px; margin-top: 5px; font-weight: bold; }");
         out.println(".item-popularity { color: #666; font-size: 25px; }");
-        out.println(".caffeine-badge { background: #322C2B; color: white; padding: 5px 10px; border-radius: 15px; font-size: 20px; margin-top: 5px; display: inline-block; }");
+        out.println(".caffeine-badge { background: #322C2B; color: white; padding: 5px 10px; border-radius: 15px; font-size: 25px; margin-top: 5px; display: inline-block; }");
         out.println(".caffeine-high { background: #8B0000; }");
         out.println(".caffeine-medium { background: #B8860B; }");
         out.println(".caffeine-low { background: #006400; }");
@@ -377,6 +353,46 @@ public class MenuServlet extends HttpServlet {
         out.println("<div class='header-right'>");
         out.println("<a href='index.html#bestsellers'>Best Sellers</a>");
         out.println("</div></div></div>");
+
+        // Category Buttons
+        out.println("<div class='category-buttons'>");
+        
+        // All Items button
+        String allClass = (category == null || category.isEmpty()) ? " active" : "";
+        out.println("<a href='MenuServlet' class='category-btn" + allClass + "'>");
+        out.println("All Items <span class='category-count'>(" + menu.size() + ")</span></a>");
+        
+        // Coffee button
+        int coffeeCount = categoryMap.getOrDefault("Coffee", Collections.emptyList()).size();
+        String coffeeClass = "Coffee".equals(category) ? " active" : "";
+        out.println("<a href='MenuServlet?category=Coffee' class='category-btn" + coffeeClass + "'>");
+        out.println("Coffee <span class='category-count'>(" + coffeeCount + ")</span></a>");
+        
+        // Tea button
+        int teaCount = categoryMap.getOrDefault("Tea", Collections.emptyList()).size();
+        String teaClass = "Tea".equals(category) ? " active" : "";
+        out.println("<a href='MenuServlet?category=Tea' class='category-btn" + teaClass + "'>");
+        out.println("Tea <span class='category-count'>(" + teaCount + ")</span></a>");
+        
+        // Caffeine-Free Drinks button
+        int caffeineFreeDrinksCount = categoryMap.getOrDefault("Caffeine-Free Drinks", Collections.emptyList()).size();
+        String caffeineFreeDrinksClass = "Caffeine-Free Drinks".equals(category) ? " active" : "";
+        out.println("<a href='MenuServlet?category=Caffeine-Free Drinks' class='category-btn" + caffeineFreeDrinksClass + "'>");
+        out.println("Caffeine-Free Drinks <span class='category-count'>(" + caffeineFreeDrinksCount + ")</span></a>");
+        
+        // Bread and Pastry button
+        int breadCount = categoryMap.getOrDefault("Bread and Pastry", Collections.emptyList()).size();
+        String breadClass = "Bread and Pastry".equals(category) ? " active" : "";
+        out.println("<a href='MenuServlet?category=Bread and Pastry' class='category-btn" + breadClass + "'>");
+        out.println("Bread and Pastry <span class='category-count'>(" + breadCount + ")</span></a>");
+        
+        // Sandwiches button
+        int sandwichesCount = categoryMap.getOrDefault("Sandwiches", Collections.emptyList()).size();
+        String sandwichesClass = "Sandwiches".equals(category) ? " active" : "";
+        out.println("<a href='MenuServlet?category=Sandwiches' class='category-btn" + sandwichesClass + "'>");
+        out.println("Sandwiches <span class='category-count'>(" + sandwichesCount + ")</span></a>");
+        
+        out.println("</div>");
 
         // Filter Container
         out.println("<div class='filter-container'>");
@@ -417,6 +433,8 @@ public class MenuServlet extends HttpServlet {
         // Display filtered/sorted items
         out.println("<div class='items-display-area'>");
         for (MenuItem item : displayItems) {
+            // Make entire item box clickable by wrapping in <a> tag
+            out.println("<a href='ProductDetail?name=" + java.net.URLEncoder.encode(item.getName(), "UTF-8") + "' class='item-box-link'>");
             out.println("<div class='item-box'>");
             String imgFile = getImageFile(item);
             out.println("<img src='images/menu/" + imgFile + "' alt='" + item.getName() + "'>");
@@ -426,6 +444,7 @@ public class MenuServlet extends HttpServlet {
             out.println(item.getCaffeineLevelText() + "</div>");
             out.println("<div class='item-popularity'>★ " + item.getPopularity() + " popularity</div>");
             out.println("</div>");
+            out.println("</a>");  // Close the <a> tag
         }
         out.println("</div>");
 
