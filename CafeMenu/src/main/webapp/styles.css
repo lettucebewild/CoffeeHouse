@@ -72,7 +72,6 @@ section {
  top: 50px;
  left: 100px;
  color: #55463c;
- background-color: #ffffff;
  z-index: 2;
 }
 .title {
@@ -162,11 +161,12 @@ section {
  display: block;
 }
 .red-mug {
- max-width: 1000px;
+ max-width: 1500px;
  height: auto;
  display: block;
  position: absolute;
- top: 50px;
+ top: 70px;
+ margin-left: -300px;
  right: 0;
  z-index: 0;
  pointer-events: none;
@@ -195,8 +195,9 @@ section {
 
 .menu-container {
  display: flex;
- gap: 20px;
+ gap: 30px;
  padding: 10px 0;
+ max-width: 1400px;
  scroll-behavior: smooth;
  margin-top: 80px;
  margin-left: 50px;
@@ -210,7 +211,7 @@ section {
  transform: scale(1.05);
 }
 .menu-box {
- min-width: 300px;
+ min-width: 350px;
  background-color: #e6e3e2;
  color: #928980;
  display: flex;
@@ -283,16 +284,40 @@ section {
 }
 
 /* ===== Items Display ===== */
-.items-display-area {
-   display: grid;
-   grid-template-columns: repeat(4, 1fr);
-   gap: 30px;
-   max-height: none;      
-   overflow: visible;     
-   margin: 50px auto;
-   padding: 20px;
-   width: 90%;
+#menu .menu-img,
+.items-display-area .item-box img {
+    background-color: #55463c;
+    padding: 15px;
+    border-radius: 25px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    
+    /* Centers the image inside the box */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* Ensures the box doesn't stretch weirdly */
+    margin: 0 auto;
 }
+
+.items-display-area .item-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.items-display-area {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    max-height: none;
+    overflow: visible;
+    margin: 50px auto;
+    padding: 20px;
+    width: 90%;
+}
+
 
 /* NEW: Styling for clickable item links */
 .item-box-link {
@@ -303,6 +328,8 @@ section {
 
 .item-box {
    background-color: #e6e3e2;
+   width: 100%;
+   max-width: 480px;
    padding-top: 30px;
    padding-bottom: 50px;
    text-align: center;
@@ -310,7 +337,7 @@ section {
    transition: all 0.3s ease;
    border: 2px solid #ffffff;
    position: relative;
-   border-radius: 15px;
+   border-radius: 35px;
    overflow: hidden;
    cursor: pointer;  /* NEW: Shows it's clickable */
 }
@@ -379,20 +406,7 @@ section {
    max-height: 200px;
    overflow: visible;
 }
-.back-button {
- background-color: #322C2B;
- color: white;
- border: none;
- padding: 12px 24px;
- font-size: 18px;
- cursor: pointer;
- margin-bottom: 30px;
- transition: background-color 0.3s ease;
- border-radius: 25px;
-}
-.back-button:hover {
- background-color: #928980;
-}
+
 /* Best Sellers Section */
 #bestsellers {
  height: 100vh;             
@@ -754,20 +768,23 @@ section {
 .item-box {
    animation: fadeInUp 0.6s ease-out;
 }
-/* ===== Scrollbar Styling ===== */
+/* ===== Scrollbar ===== */
 ::-webkit-scrollbar {
-   width: 12px;
+  width: 12px;
 }
+
 ::-webkit-scrollbar-track {
-   background: #ffffff;
-   border-radius: 10px;
+  background: #F0E6D2;
+  border-radius: 10px;
 }
+
 ::-webkit-scrollbar-thumb {
-   background: #55463c;
-   border-radius: 10px;
+  background: #9A3B3B;
+  border-radius: 10px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
-   background: #322c2b;
+  background: #322C2B;
 }
 /* Footer Section */
 #footer {
@@ -783,12 +800,420 @@ section {
  justify-content: space-between;
  align-items: center;
 }
-/* ===== Product Card Style ===== */
-.product-card-container {
- display: flex;
- flex-wrap: wrap;
- justify-content: center;
- gap: 40px;
- margin: 60px auto;
- width: 90%;
+
+/* ===== Product Detail UI ===== */
+.product-detail-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 2200px;
+  padding: 200px 100px 130px;
+  gap: 70px;
+  background-color: #ffffff;
+  box-sizing: border-box;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* ===== Back Button ===== */
+.back-button {
+  background-color: #322C2B;
+  color: white;
+  border: none;
+  padding: 24px 36px;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 35px;
+  text-decoration: none;
+  display: inline-block;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+
+.back-button:hover {
+  background-color: #4a3f3d;
+  transform: translateX(-50%) translateY(-2px);
+  box-shadow: 0 12px 20px rgba(0,0,0,0.4);
+}
+
+/* ===== Product Card ===== */
+.product-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #b1a79f;
+  border-radius: 50px;
+  padding: 120px 90px;
+  width: 100%;
+  max-width: 1800px;
+  position: relative;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+  margin-top: 100px;
+  margin-bottom: 40px;
+}
+
+/* ===== Left Side: Product Image ===== */
+.product-image-container {
+  flex: 0 0 auto;
+  position: relative;
+}
+
+.product-card img {
+  width: 650px;
+  height: auto;
+  border-radius: 25px;
+  margin-right: 70px;
+  object-fit: cover;
+  transform: scale(1.6);
+  margin-left: 15px;
+}
+
+/* ===== Price Circle ===== */
+.price-circle {
+  position: absolute;
+  bottom: 70px;
+  left: 450px;
+  background-color: #ffffff;
+  border: 4px dashed #333;
+  border-radius: 50%;
+  width: 250px;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 150px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+  z-index: 2;
+}
+
+.price-circle span {
+  font-size: 30px;
+  color: #444;
+  font-weight: normal;
+}
+
+.price-circle p {
+  margin: 6px 0 0;
+  font-size: 60px;
+}
+
+/* ===== Right Side: Product Info ===== */
+.product-info {
+  flex: 1;
+  color: #322c2b;
+  text-align: left;
+  min-width: 450px;
+  margin-left: 80px; /* Added left margin to move all info to the right */
+}
+
+.product-info h2 {
+  font-size: 80px;
+  font-weight: 900;
+  margin-bottom: 35px;
+  color: #322c2b;
+  text-transform: uppercase;
+  line-height: 1.1;
+  letter-spacing: 1.5px;
+  margin-left: 40px; /* Additional right shift for title */
+}
+
+/* ===== Rating Section ===== */
+.product-rating {
+  display: flex;
+  align-items: center;
+  margin-bottom: 35px;
+  margin-left: 40px; /* Moved rating section to the right */
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.rating-stars {
+  background-color: #4e3c33;
+  padding: 10px 25px;
+  border-radius: 35px;
+  color: #ffd700;
+  font-size: 32px;
+  letter-spacing: 3px;
+}
+
+.rating-score {
+  color: #322C2B;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+/* ===== Caffeine Level Tags - Dynamic Colors ===== */
+.caffeine-level {
+  padding: 12px 30px;
+  border-radius: 35px;
+  font-size: 24px;
+  color: #ffffff;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-left: 40px;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3); /* Better text readability */
+}
+
+/* Caffeine-Free (0) - Purple */
+.caffeine-level[data-level="0"] {
+  background-color: #4B0082;
+  box-shadow: 0 4px 8px rgba(75, 0, 130, 0.3);
+}
+
+/* Low Caffeine (1) - Green */
+.caffeine-level[data-level="1"] {
+  background-color: #006400;
+  box-shadow: 0 4px 8px rgba(0, 100, 0, 0.3);
+}
+
+/* Medium Caffeine (2) - Orange */
+.caffeine-level[data-level="2"] {
+  background-color: #B8860B;
+  box-shadow: 0 4px 8px rgba(184, 134, 11, 0.3);
+}
+
+/* High Caffeine (3) - Red */
+.caffeine-level[data-level="3"] {
+  background-color: #8B0000;
+  box-shadow: 0 4px 8px rgba(139, 0, 0, 0.3);
+}
+
+/* ===== Description ===== */
+.product-description {
+  font-size: 36px;
+  line-height: 1.7;
+  color: #322c2b;
+  margin-top: 40px;
+  max-width: 800px;
+  margin-left: 40px; /* Moved description to the right */
+}
+
+/* ===== Price Table ===== */
+.product-sizes {
+  margin-top: 40px;
+  width: 450px;
+  border-collapse: collapse;
+  margin-left: 40px; /* Moved price table to the right */
+}
+
+.product-sizes th,
+.product-sizes td {
+  padding: 20px 35px;
+  border-bottom: 2px solid #ddd;
+  color: #ffffff;
+  background-color: #4e3c33;
+  text-align: left;
+  font-size: 22px;
+}
+
+.product-sizes th {
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 24px;
+}
+
+.product-sizes td:last-child {
+  text-align: right;
+}
+
+/* ===== Responsive Design for Large Screens ===== */
+@media (max-width: 2000px) {
+  .product-detail-container {
+    padding: 160px 70px 60px;
+    max-width: 1500px;
+  }
+  
+  .back-button {
+    bottom: 20px;
+  }
+  
+  .product-card {
+    max-width: 1300px;
+    padding: 90px 70px;
+    margin-bottom: 30px;
+  }
+  
+  .product-card img {
+    width: 500px;
+    transform: scale(1.4);
+  }
+  
+  .product-info {
+    margin-left: 60px; /* Adjusted for smaller screens */
+  }
+  
+  .product-info h2 {
+    font-size: 80px;
+    margin-left: 30px;
+  }
+  
+  .product-rating,
+  .caffeine-level,
+  .product-description,
+  .product-sizes {
+    margin-left: 30px;
+  }
+  
+  .product-description {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 1440px) {
+  .product-detail-container {
+    padding: 120px 50px 50px;
+  }
+  
+  .back-button {
+    bottom: 15px;
+    padding: 20px 30px;
+    font-size: 20px;
+  }
+  
+  .product-card {
+    padding: 70px 50px;
+    margin-top: 70px;
+    margin-bottom: 25px;
+  }
+  
+  .product-card img {
+    width: 400px;
+    transform: scale(1.2);
+  }
+  
+  .price-circle {
+    width: 200px;
+    height: 200px;
+    font-size: 50px;
+    bottom: 50px;
+    left: 250px;
+  }
+  
+  .product-info {
+    margin-left: 40px;
+  }
+  
+  .product-info h2 {
+    font-size: 60px;
+    margin-left: 20px;
+  }
+  
+  .product-rating,
+  .caffeine-level,
+  .product-description,
+  .product-sizes {
+    margin-left: 20px;
+  }
+  
+  .product-description {
+    font-size: 24px;
+  }
+  
+  .rating-stars {
+    font-size: 24px;
+  }
+}
+
+/* ===== Mobile Responsiveness ===== */
+@media (max-width: 1024px) {
+  .product-detail-container {
+    padding: 100px 30px 40px;
+  }
+  
+  .back-button {
+    bottom: 10px;
+    padding: 18px 28px;
+    font-size: 18px;
+  }
+  
+  .product-card {
+    flex-direction: column;
+    padding: 50px 30px;
+    margin-top: 50px;
+    margin-bottom: 20px;
+  }
+  
+  .product-card img {
+    width: 100%;
+    max-width: 450px;
+    margin-right: 0;
+    margin-bottom: 30px;
+    transform: scale(1.1);
+  }
+  
+  .product-info {
+    margin-left: 0; /* Reset margins for mobile */
+  }
+  
+  .product-info h2 {
+    margin-left: 0;
+    text-align: center;
+  }
+  
+  .product-rating,
+  .caffeine-level,
+  .product-description,
+  .product-sizes {
+    margin-left: 0;
+  }
+  
+  .price-circle {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    margin: 25px auto;
+    width: 180px;
+    height: 180px;
+    font-size: 45px;
+  }
+  
+  .product-info h2 {
+    font-size: 50px;
+  }
+  
+  .product-description {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .product-detail-container {
+    padding: 70px 20px 30px;
+  }
+  
+  .back-button {
+    bottom: 5px;
+    padding: 16px 24px;
+    font-size: 16px;
+  }
+  
+  .product-card {
+    padding: 40px 25px;
+    border-radius: 30px;
+    margin-bottom: 15px;
+  }
+  
+  .product-info h2 {
+    font-size: 40px;
+  }
+  
+  .product-description {
+    font-size: 18px;
+  }
+  
+  .price-circle {
+    width: 160px;
+    height: 160px;
+    font-size: 38px;
+  }
 }
