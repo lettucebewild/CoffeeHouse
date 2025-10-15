@@ -1,180 +1,180 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Coffee House</title>
-  <link href="https://db.onlinewebfonts.com/c/e02bdd9828bed1e2490bdf94662dbba8?family=Arial+Nova+Cond" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-</head>
-
-<body>
-  <!-- ===== Floating Header ===== -->
-  <div class="header-wrapper">
-    <div class="header">
-      <div class="header-left">
-        <a href="#main">Main</a>
-      </div>
-      <div class="header-right">
-        <div class="dropdown" tabindex="0">
-          <a href="#menu">Menu (35)</a>
-          <ul class="dropdown-menu">
-            <li>
-              <a href="MenuServlet?category=Coffee">Coffee (16)</a>
-              <ul class="submenu">
-                <li><a href="MenuServlet?category=Coffee&subCategory=Hot">Hot (8)</a></li>
-                <li><a href="MenuServlet?category=Coffee&subCategory=Iced">Iced (8)</a></li>
-              </ul>
-            </li>
-            <li>
-              <a href="MenuServlet?category=Tea">Tea (6)</a>
-              <ul class="submenu">
-                <li><a href="MenuServlet?category=Tea&subCategory=Hot">Hot (3)</a></li>
-                <li><a href="MenuServlet?category=Tea&subCategory=Iced">Iced (3)</a></li>
-              </ul>
-            </li>
-            <li>
-              <a href="MenuServlet?category=Caffeine-Free Drinks">Caffeine-Free Drinks (3)</a>
-              <ul class="submenu">
-                <li><a href="MenuServlet?category=Caffeine-Free Drinks&subCategory=Hot">Hot (1)</a></li>
-                <li><a href="MenuServlet?category=Caffeine-Free Drinks&subCategory=Iced">Iced (2)</a></li>
-              </ul>
-            </li>
-            <li><a href="MenuServlet?category=Bread and Pastry">Bread and Pastry (6)</a></li>
-            <li><a href="MenuServlet?category=Sandwiches">Sandwiches (4)</a></li>
-          </ul>
-        </div>
-        <a href="#bestsellers">Best Sellers</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- ===== Main Section ===== -->
-  <section id="main">
-    <div class="main">
-      <div class="left-content">
-        <img src="images/main/logo.png" alt="Coffee House Logo" class="logo">
-        <div class="title">
-          <div class="coffee">Coffee</div>
-          <div class="house">House</div>
-          <div class="tagline">Quick to grab, easy to love, wherever you are.</div>
-        </div>
-      </div>
-      <img src="images/main/red mug.png" alt="Red mug" class="red-mug">
-    </div>
-  </section>
-
-  <!-- ===== Menu Section ===== -->
-  <section id="menu">
-    <h1>Menu (35)</h1>
-    <div class="menu-container">
-
-      <a href="MenuServlet?category=Coffee" class="menu-box-link">
-        <div class="menu-box">
-          <img src="images/menu/Coffee.png" alt="Coffee" class="menu-img">
-          <div class="menu-text">Coffee (16)</div>
-          <div class="menu-desc">Rich, aromatic brews crafted from carefully selected beans to energize your day.</div>
-        </div>
-      </a>
-
-      <a href="MenuServlet?category=Tea" class="menu-box-link">
-        <div class="menu-box">
-          <img src="images/menu/Tea.png" alt="Tea" class="menu-img">
-          <div class="menu-text">Tea (6)</div>
-          <div class="menu-desc">A soothing selection of hot and iced teas, from classic blends to specialty lattes.</div>
-        </div>
-      </a>
-
-      <a href="MenuServlet?category=Caffeine-Free Drinks" class="menu-box-link">
-        <div class="menu-box">
-          <!-- ✅ FIXED: Corrected path -->
-          <img src="images/menu/Caffeine-Free Drinks.png" alt="Caffeine-Free Drinks" class="menu-img">
-          <div class="menu-text">Caffeine-Free Drinks (3)</div>
-          <div class="menu-desc">Refreshing, flavorful drinks without caffeine — perfect for any time of day.</div>
-        </div>
-      </a>
-
-      <a href="MenuServlet?category=Bread and Pastry" class="menu-box-link">
-        <div class="menu-box">
-          <!-- ✅ FIXED: Corrected path -->
-          <img src="images/menu/Bread and Pastry.png" alt="Bread and Pastry" class="menu-img">
-          <div class="menu-text">Bread and Pastry (6)</div>
-          <div class="menu-desc">Freshly baked breads and pastries made daily to satisfy your sweet and savory cravings.</div>
-        </div>
-      </a>
-
-      <a href="MenuServlet?category=Sandwiches" class="menu-box-link">
-        <div class="menu-box">
-          <img src="images/menu/Sandwiches.png" alt="Sandwiches" class="menu-img">
-          <div class="menu-text">Sandwiches (4)</div>
-          <div class="menu-desc">Hearty sandwiches made with quality ingredients — perfect for a quick meal or snack.</div>
-        </div>
-      </a>
-    </div>
-  </section>
-
-  <!-- ===== Best Sellers Section ===== -->
-  <section id="bestsellers">
-    <h1>Best Sellers</h1>
-    <div class="bestseller-table">
-      <div class="bestseller-row">
-        <img src="images/bestsellers/Matcha.png" alt="Iced Matcha Latte">
-        <span class="product-name">Iced Matcha Latte</span>
-        <span class="product-price">₱140</span>
-      </div>
-      <div class="bestseller-row">
-        <img src="images/bestsellers/Mocha.png" alt="Mocha Latte">
-        <span class="product-name">Mocha Latte</span>
-        <span class="product-price">₱140</span>
-      </div>
-      <div class="bestseller-row">
-        <img src="images/bestsellers/Oat Milk.png" alt="Honey Oat Milk Latte">
-        <span class="product-name">Honey Oat Milk Latte</span>
-        <span class="product-price">₱130</span>
-      </div>
-      <div class="bestseller-row">
-        <img src="images/bestsellers/Chocolate.png" alt="Hot Chocolate">
-        <span class="product-name">Hot Chocolate</span>
-        <span class="product-price">₱95</span>
-      </div>
-      <div class="bestseller-row">
-        <img src="images/bestsellers/Chai.png" alt="Iced Chai Tea Latte">
-        <span class="product-name">Iced Chai Tea Latte</span>
-        <span class="product-price">₱140</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== Info Section ===== -->
-  <section id="info">
-    <div class="info-container">
-      <!-- ✅ Reuse SAME logo -->
-      <img src="images/main/logo.png" alt="Coffee House Logo" class="info-logo">
-
-      <div class="info-text">
-        <h1>At Coffee House</h1>
-        <p>
-          <strong>At Coffee House</strong>, we know life moves fast — that’s why we make great coffee, tea,
-          and fresh bites easy to take with you. From handcrafted drinks to warm pastries and hearty sandwiches,
-          everything is made for flavor, freshness, and convenience.
-        </p>
-        <p>
-          We believe every cup should bring comfort, and every bite should feel like a pause from the rush of the day.
-        </p>
-        <p><em>Quick to grab, easy to love, wherever you are.</em></p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== Footer ===== -->
-  <section id="footer">
-    <div class="footer-container">
-      <div class="footer-left">
-        <p>🏠︎ 551 F Jhocson St, Sampaloc, Manila, 1008 Metro Manila</p>
-      </div>
-      <div class="footer-right">
-        <p>&copy; 2025 Coffee House</p>
-      </div>
-    </div>
-  </section>
-</body>
-</html>
+	<!DOCTYPE html>
+	<html lang="en">
+	<head>
+	  <meta charset="UTF-8">
+	  <title>Coffee House</title>
+	  <link href="https://db.onlinewebfonts.com/c/e02bdd9828bed1e2490bdf94662dbba8?family=Arial+Nova+Cond" rel="stylesheet">
+	  <link rel="stylesheet" href="styles.css">
+	</head>
+	
+	<body>
+	  <!-- ===== Floating Header ===== -->
+	  <div class="header-wrapper">
+	    <div class="header">
+	      <div class="header-left">
+	        <a href="#main">≡</a>
+	      </div>
+	      <div class="header-right">
+	        <div class="dropdown" tabindex="0">
+	          <a href="#menu">Menu (35)</a>
+	          <ul class="dropdown-menu">
+	            <li>
+	              <a href="MenuServlet?category=Coffee">Coffee (16)</a>
+	              <ul class="submenu">
+	                <li><a href="MenuServlet?category=Coffee&subCategory=Hot">Hot (8)</a></li>
+	                <li><a href="MenuServlet?category=Coffee&subCategory=Iced">Iced (8)</a></li>
+	              </ul>
+	            </li>
+	            <li>
+	              <a href="MenuServlet?category=Tea">Tea (6)</a>
+	              <ul class="submenu">
+	                <li><a href="MenuServlet?category=Tea&subCategory=Hot">Hot (3)</a></li>
+	                <li><a href="MenuServlet?category=Tea&subCategory=Iced">Iced (3)</a></li>
+	              </ul>
+	            </li>
+	            <li>
+	              <a href="MenuServlet?category=Caffeine-Free Drinks">Caffeine-Free Drinks (3)</a>
+	              <ul class="submenu">
+	                <li><a href="MenuServlet?category=Caffeine-Free Drinks&subCategory=Hot">Hot (1)</a></li>
+	                <li><a href="MenuServlet?category=Caffeine-Free Drinks&subCategory=Iced">Iced (2)</a></li>
+	              </ul>
+	            </li>
+	            <li><a href="MenuServlet?category=Bread and Pastry">Bread and Pastry (6)</a></li>
+	            <li><a href="MenuServlet?category=Sandwiches">Sandwiches (4)</a></li>
+	          </ul>
+	        </div>
+	        <a href="#bestsellers">Best Sellers</a>
+	      </div>
+	    </div>
+	  </div>
+	
+	  <!-- ===== Main Section ===== -->
+	  <section id="main">
+	    <div class="main">
+	      <div class="left-content">
+	        <img src="images/main/logo.png" alt="Coffee House Logo" class="logo">
+	        <div class="title">
+	          <div class="coffee">Coffee</div>
+	          <div class="house">House</div>
+	          <div class="tagline">Quick to grab, easy to love, wherever you are.</div>
+	        </div>
+	      </div>
+	      <img src="images/main/red mug.png" alt="Red mug" class="red-mug">
+	    </div>
+	  </section>
+	
+	  <!-- ===== Menu Section ===== -->
+	  <section id="menu">
+	    <h1>Menu (35)</h1>
+	    <div class="menu-container">
+	
+	      <a href="MenuServlet?category=Coffee" class="menu-box-link">
+	        <div class="menu-box">
+	          <img src="images/menu/Coffee.png" alt="Coffee" class="menu-img">
+	          <div class="menu-text">Coffee (16)</div>
+	          <div class="menu-desc">Rich, aromatic brews crafted from carefully selected beans to energize your day.</div>
+	        </div>
+	      </a>
+	
+	      <a href="MenuServlet?category=Tea" class="menu-box-link">
+	        <div class="menu-box">
+	          <img src="images/menu/Tea.png" alt="Tea" class="menu-img">
+	          <div class="menu-text">Tea (6)</div>
+	          <div class="menu-desc">A soothing selection of hot and iced teas, from classic blends to specialty lattes.</div>
+	        </div>
+	      </a>
+	
+	      <a href="MenuServlet?category=Caffeine-Free Drinks" class="menu-box-link">
+	        <div class="menu-box">
+	          <!-- ✅ FIXED: Corrected path -->
+	          <img src="images/menu/Caffeine-Free Drinks.png" alt="Caffeine-Free Drinks" class="menu-img">
+	          <div class="menu-text">Caffeine-Free Drinks (3)</div>
+	          <div class="menu-desc">Refreshing, flavorful drinks without caffeine — perfect for any time of day.</div>
+	        </div>
+	      </a>
+	
+	      <a href="MenuServlet?category=Bread and Pastry" class="menu-box-link">
+	        <div class="menu-box">
+	          <!-- ✅ FIXED: Corrected path -->
+	          <img src="images/menu/Bread and Pastry.png" alt="Bread and Pastry" class="menu-img">
+	          <div class="menu-text">Bread and Pastry (6)</div>
+	          <div class="menu-desc">Freshly baked breads and pastries made daily to satisfy your sweet and savory cravings.</div>
+	        </div>
+	      </a>
+	
+	      <a href="MenuServlet?category=Sandwiches" class="menu-box-link">
+	        <div class="menu-box">
+	          <img src="images/menu/Sandwiches.png" alt="Sandwiches" class="menu-img">
+	          <div class="menu-text">Sandwiches (4)</div>
+	          <div class="menu-desc">Hearty sandwiches made with quality ingredients — perfect for a quick meal or snack.</div>
+	        </div>
+	      </a>
+	    </div>
+	  </section>
+	
+	  <!-- ===== Best Sellers Section ===== -->
+	  <section id="bestsellers">
+	    <h1>Best Sellers</h1>
+	    <div class="bestseller-table">
+	      <div class="bestseller-row">
+	        <img src="images/bestsellers/Matcha.png" alt="Iced Matcha Latte">
+	        <span class="product-name">Iced Matcha Latte</span>
+	        <span class="product-price">₱140</span>
+	      </div>
+	      <div class="bestseller-row">
+	        <img src="images/bestsellers/Mocha.png" alt="Mocha Latte">
+	        <span class="product-name">Mocha Latte</span>
+	        <span class="product-price">₱140</span>
+	      </div>
+	      <div class="bestseller-row">
+	        <img src="images/bestsellers/Oat Milk.png" alt="Honey Oat Milk Latte">
+	        <span class="product-name">Honey Oat Milk Latte</span>
+	        <span class="product-price">₱130</span>
+	      </div>
+	      <div class="bestseller-row">
+	        <img src="images/bestsellers/Chocolate.png" alt="Hot Chocolate">
+	        <span class="product-name">Hot Chocolate</span>
+	        <span class="product-price">₱95</span>
+	      </div>
+	      <div class="bestseller-row">
+	        <img src="images/bestsellers/Chai.png" alt="Iced Chai Tea Latte">
+	        <span class="product-name">Iced Chai Tea Latte</span>
+	        <span class="product-price">₱140</span>
+	      </div>
+	    </div>
+	  </section>
+	
+	  <!-- ===== Info Section ===== -->
+	  <section id="info">
+	    <div class="info-container">
+	      <!-- ✅ Reuse SAME logo -->
+	      <img src="images/main/logo.png" alt="Coffee House Logo" class="info-logo">
+	
+	      <div class="info-text">
+	        <h1>At Coffee House</h1>
+	        <p>
+	          we know life moves fast — that’s why we make great coffee, tea,
+	          and fresh bites easy to take with you. From handcrafted drinks to warm pastries and hearty sandwiches,
+	          everything is made for flavor, freshness, and convenience.
+	        </p>
+	        <p>
+	          We believe every cup should bring comfort, and every bite should feel like a pause from the rush of the day.
+	        </p>
+	        <p><em>Quick to grab, easy to love, wherever you are.</em></p>
+	      </div>
+	    </div>
+	  </section>
+	
+	  <!-- ===== Footer ===== -->
+	  <section id="footer">
+	    <div class="footer-container">
+	      <div class="footer-left">
+	        <p>🏠︎ 551 F Jhocson St, Sampaloc, Manila, 1008 Metro Manila</p>
+	      </div>
+	      <div class="footer-right">
+	        <p>&copy; 2025 Coffee House</p>
+	      </div>
+	    </div>
+	  </section>
+	</body>
+	</html>
