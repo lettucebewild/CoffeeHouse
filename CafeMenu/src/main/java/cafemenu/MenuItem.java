@@ -1,19 +1,21 @@
 package cafemenu;
 
 public class MenuItem implements Comparable<MenuItem> {
-    private String name;
-    private String category;
-    private String subCategory;
-    private String imageUrl;
-    private int price;
-    private int popularity;
-    private int caffeineLevel; // 0: Caffeine-Free, 1: Low, 2: Medium, 3: High
+    private String name;          // maps to item_name
+    private String category;      // maps to category_name or derived from category_id
+    private String subCategory;   // optional, can be null
+    private String imageUrl;      // maps to image_url
+    private int price;            // maps to price
+    private int popularity;       // 1–5 stars
+    private int caffeineLevel;    // 0–3
 
+    // === Constructors ===
     public MenuItem(String name, String category, String subCategory, String imageUrl, int price) {
         this(name, category, subCategory, imageUrl, price, 0, calculateDefaultCaffeineLevel(category, name));
     }
 
-    public MenuItem(String name, String category, String subCategory, String imageUrl, int price, int popularity, int caffeineLevel) {
+    public MenuItem(String name, String category, String subCategory, String imageUrl,
+                    int price, int popularity, int caffeineLevel) {
         this.name = name;
         this.category = category;
         this.subCategory = subCategory;
@@ -23,22 +25,23 @@ public class MenuItem implements Comparable<MenuItem> {
         this.caffeineLevel = caffeineLevel;
     }
 
+    // === Automatic caffeine level assignment based on category ===
     private static int calculateDefaultCaffeineLevel(String category, String name) {
-        switch (category) {
-            case "Caffeine-Free Drinks":
-                return 0;
-            case "Tea":
-                return name.toLowerCase().contains("matcha") ? 2 : 1;
-            case "Coffee":
-                if (name.toLowerCase().contains("espresso") || name.toLowerCase().contains("cold brew")) return 3;
-                if (name.toLowerCase().contains("coffee") || name.toLowerCase().contains("americano")) return 2;
-                return 1;
-            default:
-                return 0;
+        if (category == null || name == null) return 0;
+        String lowerCategory = category.toLowerCase();
+        String lowerName = name.toLowerCase();
+
+        if (lowerCategory.contains("caffeine-free")) return 0;
+        if (lowerCategory.contains("tea")) return lowerName.contains("matcha") ? 2 : 1;
+        if (lowerCategory.contains("coffee")) {
+            if (lowerName.contains("espresso") || lowerName.contains("cold brew")) return 3;
+            if (lowerName.contains("coffee") || lowerName.contains("americano")) return 2;
+            return 1;
         }
+        return 0;
     }
 
-    // Getters
+    // === Getters ===
     public String getName() { return name; }
     public String getCategory() { return category; }
     public String getSubCategory() { return subCategory; }
@@ -46,17 +49,27 @@ public class MenuItem implements Comparable<MenuItem> {
     public int getPrice() { return price; }
     public int getPopularity() { return popularity; }
     public int getCaffeineLevel() { return caffeineLevel; }
+
     public String getCaffeineLevelText() {
-        switch (caffeineLevel) {
-            case 0: return "Caffeine-Free";
-            case 1: return "Low";
-            case 2: return "Medium";
-            case 3: return "High";
-            default: return "Unknown";
-        }
+        return switch (caffeineLevel) {
+            case 0 -> "Caffeine-Free";
+            case 1 -> "Low";
+            case 2 -> "Medium";
+            case 3 -> "High";
+            default -> "Unknown";
+        };
     }
 
-    // Setters
+    // === Popularity Stars ===
+    public String getPopularityStars() {
+        StringBuilder stars = new StringBuilder();
+        int cappedPopularity = Math.max(0, Math.min(popularity, 5)); // Ensure 0–5
+        for (int i = 0; i < cappedPopularity; i++) stars.append("★");
+        for (int i = cappedPopularity; i < 5; i++) stars.append("☆");
+        return stars.toString();
+    }
+
+    // === Setters ===
     public void setName(String name) { this.name = name; }
     public void setCategory(String category) { this.category = category; }
     public void setSubCategory(String subCategory) { this.subCategory = subCategory; }
@@ -66,12 +79,12 @@ public class MenuItem implements Comparable<MenuItem> {
     public void setCaffeineLevel(int caffeineLevel) { this.caffeineLevel = caffeineLevel; }
     public void incrementPopularity() { this.popularity++; }
 
-    // Hash code for efficient hashing
+    // === Equality & Hashing ===
     @Override
     public int hashCode() {
         int result = 17;
-        result = 31 * result + name.hashCode();
-        result = 31 * result + category.hashCode();
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (category != null ? category.hashCode() : 0);
         result = 31 * result + (subCategory != null ? subCategory.hashCode() : 0);
         result = 31 * result + caffeineLevel;
         return result;
@@ -81,14 +94,13 @@ public class MenuItem implements Comparable<MenuItem> {
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
-        
         MenuItem other = (MenuItem) obj;
-        return name.equals(other.name) && 
-               category.equals(other.category) && 
-               caffeineLevel == other.caffeineLevel;
+        return name.equals(other.name)
+                && category.equals(other.category)
+                && caffeineLevel == other.caffeineLevel;
     }
 
-    // Natural ordering by name
+    // === Natural ordering by name ===
     @Override
     public int compareTo(MenuItem other) {
         return this.name.compareToIgnoreCase(other.name);
@@ -96,7 +108,9 @@ public class MenuItem implements Comparable<MenuItem> {
 
     @Override
     public String toString() {
-        return String.format("MenuItem{name='%s', category='%s', caffeine=%s, price=%d, popularity=%d}", 
-                           name, category, getCaffeineLevelText(), price, popularity);
+        return String.format(
+                "MenuItem{name='%s', category='%s', caffeine=%s, price=%d, popularity=%d, stars='%s', imageUrl='%s'}",
+                name, category, getCaffeineLevelText(), price, popularity, getPopularityStars(), imageUrl
+        );
     }
 }
