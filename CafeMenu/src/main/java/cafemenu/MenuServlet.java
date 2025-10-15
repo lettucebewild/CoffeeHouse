@@ -36,9 +36,9 @@ public class MenuServlet extends HttpServlet {
                 Class.forName("com.mysql.jdbc.Driver");
             }
             
-            String url = "jdbc:mysql://localhost:3306/coffeemenu";
+            String url = "jdbc:mysql://localhost:3306/coffee_house_db";
             String username = "root";
-            String password = "Catsarecute!:3";
+            String password = "Wsqk@2jej76";
             
             connection = DriverManager.getConnection(url, username, password);
             System.out.println("Database connected successfully!");
@@ -55,30 +55,53 @@ public class MenuServlet extends HttpServlet {
     private void loadMenuFromDatabase() {
         menu = new ArrayList<>();
         try {
-            String sql = "SELECT name, category, sub_category, image_url, price, popularity, caffeine_level FROM menu_items ORDER BY category, name";
+            // Corrected column names
+            String sql = "SELECT item_name, category_id, subcategory_id, image_url, price, popularity, caffeine_level FROM menu_items ORDER BY category_id, item_name";
             PreparedStatement statement = connection.prepareStatement(sql);
             ResultSet resultSet = statement.executeQuery();
-            
+
             while (resultSet.next()) {
-                String name = resultSet.getString("name");
-                String category = resultSet.getString("category");
-                String subCategory = resultSet.getString("sub_category");
+                String name = resultSet.getString("item_name");
+                int category = resultSet.getInt("category_id");       // or map ID to category name if needed
+                int subCategory = resultSet.getInt("subcategory_id"); // optional mapping
                 String imageUrl = resultSet.getString("image_url");
                 int price = resultSet.getInt("price");
                 int popularity = resultSet.getInt("popularity");
                 int caffeineLevel = resultSet.getInt("caffeine_level");
-                
-                menu.add(new MenuItem(name, category, subCategory, imageUrl, price, popularity, caffeineLevel));
+
+                String categoryName = getCategoryName(category);
+                String subCategoryName = getSubCategoryName(subCategory);
+
+                menu.add(new MenuItem(name, categoryName, subCategoryName, imageUrl, price, popularity, caffeineLevel));
             }
-            
+
             resultSet.close();
             statement.close();
             System.out.println("Menu loaded from database: " + menu.size() + " items");
-            
+
         } catch (SQLException e) {
             System.err.println("Failed to load menu from database: " + e.getMessage());
             initializeDefaultMenu();
         }
+    }
+    
+    private String getCategoryName(int categoryId) {
+        return switch (categoryId) {
+            case 1 -> "Coffee";
+            case 2 -> "Tea";
+            case 3 -> "Caffeine-Free Drinks";
+            case 4 -> "Bread and Pastry";
+            case 5 -> "Sandwiches";
+            default -> "Unknown";
+        };
+    }
+
+    private String getSubCategoryName(int subCategoryId) {
+        return switch (subCategoryId) {
+            case 1 -> "Hot";
+            case 2 -> "Iced";
+            default -> "";
+        };
     }
 
     private void initializeDefaultMenu() {
@@ -349,7 +372,7 @@ public class MenuServlet extends HttpServlet {
 
         // Header
         out.println("<div class='header-wrapper'><div class='header'>");
-        out.println("<div><a href='index.html'>Main</a></div>");
+        out.println("<div><a href='index.html'>≡</a></div>");
         out.println("<div class='header-right'>");
         out.println("<a href='index.html#bestsellers'>Best Sellers</a>");
         out.println("</div></div></div>");
@@ -437,12 +460,11 @@ public class MenuServlet extends HttpServlet {
             out.println("<a href='ProductDetail?name=" + java.net.URLEncoder.encode(item.getName(), "UTF-8") + "' class='item-box-link'>");
             out.println("<div class='item-box'>");
             String imgFile = getImageFile(item);
-            out.println("<img src='images/menu/" + imgFile + "' alt='" + item.getName() + "'>");
-            out.println("<div class='item-name'>" + item.getName().toUpperCase() + "</div>");
+            out.println("<img src='images/menu/" + imgFile + "' alt='" + item.getName() + "'>");            out.println("<div class='item-name'>" + item.getName().toUpperCase() + "</div>");
             out.println("<div class='item-price'>₱" + item.getPrice() + "</div>");
             out.println("<div class='caffeine-badge caffeine-" + getCaffeineClass(item.getCaffeineLevel()) + "'>");
             out.println(item.getCaffeineLevelText() + "</div>");
-            out.println("<div class='item-popularity'>★ " + item.getPopularity() + " popularity</div>");
+            out.println("<div class='item-popularity'>" + item.getPopularityStars() + "</div>");
             out.println("</div>");
             out.println("</a>");  // Close the <a> tag
         }
@@ -504,17 +526,17 @@ public class MenuServlet extends HttpServlet {
     }
 
     private String getImageFile(MenuItem item) {
-        String categoryFolder = item.getCategory().toLowerCase().replace(" ", "-").replace("&", "and");
-        String nameFile = item.getName().toLowerCase().replace(" ", "-") + ".png";
-        return categoryFolder + "/" + nameFile;
-    }
+        // Keep the original name with spaces and capitalization
+        String fileName = item.getName() + ".png";
+        System.out.println("Image path: " + fileName); // Debug
+        return item.getName() + ".png";    
+        }
 
     private String getCaffeineClass(int caffeineLevel) {
         switch (caffeineLevel) {
             case 3: return "high";
             case 2: return "medium";
             case 1: return "low";
-            case 0: return "free";
             default: return "free";
         }
     }
